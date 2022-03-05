@@ -1,2 +1,5 @@
-samples/
-frames/
+samples/*
+frames/*
+*.MOV
+*.mov
+*.jpg
