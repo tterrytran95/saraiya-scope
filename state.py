@@ -10,6 +10,6 @@ class State:
         self.previous = previous 
         self.museum = museum # list of frames that represent the museum
     
-    def start():
-        while current != 
+    # def start():
+    #     while current != 
 

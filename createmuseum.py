@@ -16,12 +16,9 @@ def FrameCapture(path):
     success = 1
     outframes = [] # list out outframes
     while success:
-		# vidObj object calls read
-		# function extract frames
-        success, image = vidObj.read()
+        success, image = vidObj.read() # vidObj object calls read # function extract frames
 
-		# Saves the frames with frame-count
-        if count % FRAME_RATE == 0 and success: 
+        if count % FRAME_RATE == 0 and success: # Saves the frames with frame-count
             cv2.imwrite("frames/frame%d.jpg" % count, image)
             outframes.append("frames/frame%d.jpg" % count) # just save the name of the image 
         count += 1
@@ -30,5 +27,5 @@ def FrameCapture(path):
 # Driver Code
 if __name__ == '__main__':
 
-	# Calling the function
+	# Calling the functions
 	FrameCapture("samples/theview.MOV")
