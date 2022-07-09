@@ -58,4 +58,4 @@ while True:
     
     print(get_state(current, previous))
           
-    time.sleep(1)
+    time.sleep(.25)
