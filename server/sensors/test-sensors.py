@@ -20,33 +20,32 @@ def runExample():
         print("The Qwiic Proximity device isn't connected to the system. Please check your connection", file=sys.stderr)
         return
     prox_sensors = [oProx_0, oProx_3, oProx_4, oProx_7]
+    print(oProx_0.get_id())
+    print(oProx_3.get_id())
+    print(oProx_4.get_id())
+    print(oProx_7.get_id())
     listen(prox_sensors)
 
     while True:
-        # print_id_value(prox_sensors)
-        id_0 = oProx_0.get_id()
-        id_3 = oProx_7.get_id()
-        
-        val_0 = oProx_0.get_proximity()
-        val_3 = oProx_3.get_proximity()
-        print(id_0, val_0)
-        print(id_3, val_3)
+        print_id_value(prox_sensors)
         time.sleep(.1)
     
 def listen(prox_sensors):
     for sensor in prox_sensors:
-        sensor.begin()
+        out = sensor.begin()
 
 def print_id_value(prox_sensors):
     for sensor in prox_sensors:
         prox_value = sensor.get_proximity()
-        prox_id = sensor.get_id()
+        # prox_id = sensor.get_id()
+        prox_id = property(get_id)
         print(prox_id, prox_value)
         
 def set_channels():
-    mux = qwiic.QwiicTCA9548A()
-    mux.list_channels()
-    mux.enable_channels([0,3,4,7])
+    mux = qwiic.QwiicTCA9548A() # create the multiplexer 
+    print(mux.list_channels())
+    chans = mux.enable_channels([0,3,4,7])
+    print(chans)
     # mux.enable_channels(0)
     # mux.enable_channels(3)
     # mux.enable_channels(4)
